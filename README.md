@@ -29,8 +29,8 @@
           <td align="center"><b>⚡ Shuupiro Solver</b></td>
         </tr>
         <tr>
-          <td align="center">100 Solves = <b>3 INR / $0.03</b></td>
-          <td align="center">100 Solves = <b>5 INR / $0.045</b></td>
+          <td align="center">100 Solves = <b>3 INR / $0.035</b></td>
+          <td align="center">100 Solves = <b>5 INR / $0.054</b></td>
         </tr>
       </table>
       <p><b>🔥 BULK DISCOUNTS AVAILABLE FOR LARGE PURCHASES 🔥</b></p>
