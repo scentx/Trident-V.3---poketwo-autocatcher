@@ -16,6 +16,34 @@
 
 ---
 
+<div align="center">
+<table style="border: 2px solid #FFD700; border-radius: 10px; padding: 20px; background-color: #1a1a1a;">
+  <tr>
+    <td align="center">
+      <h2>🚀 CHEAPEST CAPTCHA SOLVING IN MARKET 🚀</h2>
+      <p><i>Trident Integrated Captcha Solutions - Instant & Reliable</i></p>
+      <hr style="border: 1px solid #FFD700;">
+      <table width="100%">
+        <tr>
+          <td align="center"><b>🤖 Hoopa Solver</b></td>
+          <td align="center"><b>⚡ Shuupiro Solver</b></td>
+        </tr>
+        <tr>
+          <td align="center">100 Solves = <b>3 INR / $0.03</b></td>
+          <td align="center">100 Solves = <b>5 INR / $0.045</b></td>
+        </tr>
+      </table>
+      <p><b>🔥 BULK DISCOUNTS AVAILABLE FOR LARGE PURCHASES 🔥</b></p>
+      <a href="https://discord.com/invite/CF8jDHhyxa">
+        <img src="https://img.shields.io/badge/JOIN_DISCORD_TO_BUY-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Buy Now">
+      </a>
+    </td>
+  </tr>
+</table>
+</div>
+
+---
+
 ## 🔱 Overview
 
 **Trident v1.3** is a premium Discord selfbot designed for high-efficiency Pokétwo automation. Built on a modular architecture, it combines lightning-fast image recognition with robust account management to provide a seamless catching experience.
