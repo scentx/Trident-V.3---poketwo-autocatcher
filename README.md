@@ -1,8 +1,8 @@
-# Trident v1.3 - Advanced Pokétwo Autocatcher
+# Trident v3 - Advanced Pokétwo Autocatcher
 
 <p align="center">
   <a href="https://discord.gg/CF8jDHhyxa"><img width="250px" src="https://i.ibb.co/sdbS49vL/Gemini-Generated-Image-ih1cfih1cfih1cfi.png" alt="Trident Logo"></a>
-  <h1 align="center">Trident v1.3</h1>
+  <h1 align="center">Trident v3</h1>
 </p>
 
 <p align="center">
@@ -46,7 +46,7 @@
 
 ## 🔱 Overview
 
-**Trident v1.3** is a premium Discord selfbot designed for high-efficiency Pokétwo automation. Built on a modular architecture, it combines lightning-fast image recognition with robust account management to provide a seamless catching experience.
+**Trident v3** is a premium Discord selfbot designed for high-efficiency Pokétwo automation. Built on a modular architecture, it combines lightning-fast image recognition with robust account management to provide a seamless catching experience.
 
 ---
 
