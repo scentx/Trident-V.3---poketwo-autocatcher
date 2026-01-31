@@ -77,6 +77,7 @@ Trident features a powerful, real-time web dashboard to manage your entire opera
 - 🏪 **Market Automation**: Advanced Discord-style market panel for buying listings.
 - 📊 **Real-Time Web Panel**: Branded interface for real-time monitoring.
 - 📜 **Detailed Logging**: Comprehensive Discord webhook integration.
+- **Integrated Token Checker**: Quickly verify the validity and status of your account tokens through the interactive stats menu.
 
 ---
 
