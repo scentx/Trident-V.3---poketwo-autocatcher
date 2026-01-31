@@ -12,7 +12,6 @@
 <p align="center">
   <a href="https://discord.gg/CF8jDHhyxa"><img src="https://img.shields.io/discord/1133853334944632832?label=Support%20Server&logo=discord&logoColor=white&style=for-the-badge&color=7289da" alt="Discord"></a>
   <a href="https://www.nodejs.org/"><img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white" alt="made-with-nodejs"></a>
-  <img src="https://img.shields.io/badge/AI--Powered-FF69B4?style=for-the-badge&logo=google-gemini&logoColor=white" alt="AI Powered">
 </p>
 
 ---
