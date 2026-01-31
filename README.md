@@ -71,7 +71,7 @@ Trident features a powerful, real-time web dashboard to manage your entire opera
 ## ✨ Key Features
 
 - 🚀 **High-Speed Autocatcher**: Near-instant identification and catching of spawns.
-- 🧠 **AI Image Recognition**: Over 99% accuracy using dedicated AI API.
+- 🧠 **AI Image Recognition**: Over 99% accuracy using dedicated AI API. Paid api
 - 🧩 **Dual Captcha Solving**: Native Node.js implementation for **Hoopa** and **Shuupiro**.
 - 👥 **Multi-Account Support**: Manage dozens of tokens simultaneously with independent stats.
 - 🏪 **Market Automation**: Advanced Discord-style market panel for buying listings.
