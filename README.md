@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <strong>The most sophisticated, multi-account Pokétwo automation suite powered by and Node.js.</strong>
+  <strong>The most sophisticated, multi-account Pokétwo automation suite powered by Node.js.</strong>
 </p>
 
 <p align="center">
@@ -50,10 +50,28 @@
 
 ---
 
+## 🌐 Web Control Panel
+
+Trident features a powerful, real-time web dashboard to manage your entire operation from one place.
+
+<p align="center">
+  <img src="assets/panel_1.png" alt="Trident Panel Overview" width="800px" style="border-radius: 10px; border: 1px solid #333;">
+  <br>
+  <img src="assets/panel_2.png" alt="Trident Automation Controls" width="800px" style="border-radius: 10px; border: 1px solid #333;">
+</p>
+
+### 📊 Dashboard Features:
+- **Live Performance Stats**: Track active accounts, total catches, and coin balances in real-time.
+- **Automation Controls**: Start or stop catching and AI identification with a single click.
+- **Integrated Solver Test**: Test your captcha solver configuration directly from the panel.
+- **Market Operations**: Complete Discord-style market purchase flow integrated into the UI.
+
+---
+
 ## ✨ Key Features
 
 - 🚀 **High-Speed Autocatcher**: Near-instant identification and catching of spawns.
-- 🧠 **AI Image Recognition**: Over 99% accuracy using dedicated AI API. You need to purcahse api
+- 🧠 **AI Image Recognition**: Over 99% accuracy using dedicated AI API.
 - 🧩 **Dual Captcha Solving**: Native Node.js implementation for **Hoopa** and **Shuupiro**.
 - 👥 **Multi-Account Support**: Manage dozens of tokens simultaneously with independent stats.
 - 🏪 **Market Automation**: Advanced Discord-style market panel for buying listings.
@@ -83,16 +101,6 @@
 | `.click [btn] [row]` | Programmatically clicks interaction buttons on messages. |
 | `.incense` | Automatically purchases and activates a Pokétwo incense. |
 | `.mbuy [id]` | Quickly initiates a market purchase for a specific listing ID. |
-
----
-
-## 🌐 Web Control Panel
-
-Trident includes a built-in web dashboard (default port `5000`) featuring:
-- **Live Stats Display**: Total catches, active connections, and coin totals.
-- **Account Management**: View per-account health and connection status.
-- **Captcha Logs**: Real-time monitoring of automated captcha solves.
-- **Market Interface**: Step-by-step UI for account, server, and listing selection.
 
 ---
 
