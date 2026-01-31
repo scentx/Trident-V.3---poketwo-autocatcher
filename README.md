@@ -55,9 +55,9 @@
 Trident features a powerful, real-time web dashboard to manage your entire operation from one place.
 
 <p align="center">
-  <img src="assets/panel_1.png" alt="Trident Panel Overview" width="800px" style="border-radius: 10px; border: 1px solid #333;">
+  <img src="https://media.discordapp.net/attachments/1351260615515049984/1467187197227700345/panel_1.png?ex=697f780e&is=697e268e&hm=5575b5a3b190bf7335dca565eb6f080ce90f1ec0abdfb58d65e0ec462b874ff7&=&format=webp&quality=lossless&width=1478&height=695" alt="Trident Panel Overview" width="800px" style="border-radius: 10px; border: 1px solid #333;">
   <br>
-  <img src="assets/panel_2.png" alt="Trident Automation Controls" width="800px" style="border-radius: 10px; border: 1px solid #333;">
+  <img src="https://cdn.discordapp.net/attachments/1351260615515049984/1467187197701525807/panel_2.png?ex=697f780e&is=697e268e&hm=30695dec13a1758bf356002d71ff723d4d59e1edba9fb3eb3bfcc72b99afccf1&" alt="Trident Automation Controls" width="800px" style="border-radius: 10px; border: 1px solid #333;">
 </p>
 
 ### 📊 Dashboard Features:
