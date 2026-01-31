@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <strong>The most sophisticated, multi-account Pokétwo automation suite powered by AI and Node.js.</strong>
+  <strong>The most sophisticated, multi-account Pokétwo automation suite powered by Node.js.</strong>
 </p>
 
 <p align="center">
