@@ -132,6 +132,23 @@ class AutoCatcher {
           }
 
           if (embed.title.includes("has appeared")) {
+            // Check if AI catch is enabled
+            if (this.aiCatch && embed.image?.url) {
+              try {
+                const [pokemonName, confidence] = await getName(embed.image.url, "");
+                if (pokemonName && confidence > 60) {
+                  let msgs = [`c`, `catch`];
+                  await message.channel.send(
+                    `<@${poketwo}> ${msgs[Math.round(Math.random())]} ${pokemonName}`
+                  );
+                  log(`AI identified: ${pokemonName} (${confidence}% confidence)`.magenta);
+                  return;
+                }
+              } catch (error) {
+                log(`AI identification failed: ${error.message}`.red);
+              }
+            }
+            
             const helperFilter = (msg) => msg.author.id === p2ass;
             let msg;
             try {
@@ -315,17 +332,17 @@ class AutoCatcher {
                 .setURL(message.url)
                 .setTitle(`Pokémon Caught`)
                 .setDescription(
-                  `\n\n- **User**         ${this.client.user.username
-                  }\n- **Name**       \`${caught.name
-                  }\`\n- **Level**        \`${caught.level
-                  }\`\n- **Shiny**        \`${caught.shiny ? " Yes" : "No"
-                  }\`\n-  **IV**               \`${caught.iv.toFixed(
+                  `\n\n- **User**       ★  ${this.client.user.username
+                  }\n- **Name**     ★  \`${caught.name
+                  }\`\n- **Level**      ★  \`${caught.level
+                  }\`\n- **Shiny**      ★  \`${caught.shiny ? " ✅ ✨" : "❌"
+                  }\`\n-  **IV**             ★   \`${caught.iv.toFixed(
                     2
-                  )}%\`\n\n\`\`\`[CAUGHT]\`\`\``
+                  )}%\`\n\n\`\`\`${boxColor.repeat(9)}\`\`\``
                 )
                 .setColor(colors[loggable[0]] ?? "DarkButNotBlack")
                 .setFooter({
-                  text: `${loggable.join(" | ") || `Regular`}`,
+                  text: `${loggable.join(" | ") || `Unknown?`}`,
                 });
 
               const image = await getImage(caught.name, caught.shiny);

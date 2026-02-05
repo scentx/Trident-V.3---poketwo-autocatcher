@@ -408,16 +408,23 @@
     </footer>
 
     <script>
+        console.log("Trident Panel JavaScript loaded successfully");
+        
         async function refreshStats() {
             try {
+                console.log("Fetching stats...");
                 const res = await fetch('/api/stats');
                 const data = await res.json();
+                console.log("Stats response:", data);
                 if (data.success) {
-                    document.getElementById('stat-active').textContent = data.active;
-                    document.getElementById('stat-catches').textContent = data.catches;
-                    document.getElementById('stat-coins').textContent = data.coins;
+                    document.getElementById('stat-active').textContent = data.active || 0;
+                    document.getElementById('stat-catches').textContent = data.catches || 0;
+                    document.getElementById('stat-coins').textContent = data.coins || 0;
                 }
-            } catch (err) { console.error(err); }
+            } catch (err) { 
+                console.error("Stats fetch error:", err); 
+                showOutput("Error fetching stats: " + err.message);
+            }
         }
 
         async function toggleFeature(feature, state) {

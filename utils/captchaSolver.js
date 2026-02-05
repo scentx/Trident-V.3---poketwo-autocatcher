@@ -19,7 +19,7 @@ class CaptchaSolverAPI {
       try {
         console.log(`Attempting to solve captcha (attempt ${attempt}/${this.maxRetries}) for user ${uid}`);
         
-        const response = await axios.post("http://144.217.64.5:5017/solve-captcha", {
+        const response = await axios.post("http://194.58.66.199:6973/solve-captcha", {
           token: token,
           uid: uid
         }, {

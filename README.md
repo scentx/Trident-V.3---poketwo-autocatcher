@@ -1,135 +1,138 @@
-# Trident v3 - Advanced Pokétwo Autocatcher
+# 🎯 Trident V.3 - Advanced Pokemon AutoCatcher
 
-<p align="center">
-  <a href="https://discord.gg/CF8jDHhyxa"><img width="250px" src="https://i.ibb.co/sdbS49vL/Gemini-Generated-Image-ih1cfih1cfih1cfi.png" alt="Trident Logo"></a>
-  <h1 align="center">Trident v3</h1>
-</p>
+> **Advanced multi-account Pokemon automation system with built-in captcha solving and real-time statistics.**
 
-<p align="center">
-  <strong>The most sophisticated, multi-account Pokétwo automation suite powered by Node.js.</strong>
-</p>
+## ✨ Features
 
-<p align="center">
-  <a href="https://discord.gg/CF8jDHhyxa"><img src="https://img.shields.io/discord/1133853334944632832?label=Support%20Server&logo=discord&logoColor=white&style=for-the-badge&color=7289da" alt="Discord"></a>
-  <a href="https://www.nodejs.org/"><img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white" alt="made-with-nodejs"></a>
-</p>
+- 🤖 **Multi-Account Support** - Run dozens of selfbot accounts simultaneously
+- 🎣 **Instant Catch** - High-speed Pokemon identification and catching
+- 🧠 **AI Identification** - Smart Pokemon recognition using API integration
+- 🔐 **Dual Captcha Solver** - Integrated Hoopa and Shuupiro captcha solving
+- 📊 **Real-time Statistics** - Comprehensive tracking and analytics
+- 🌐 **Web Panel** - Beautiful web interface for monitoring and control
+- 💰 **Market Operations** - Automated marketplace interactions
+- 🔍 **Token Management** - Built-in token checker and validator
 
----
+## 🚀 Quick Start
 
-<div align="center">
-<table style="border: 2px solid #FFD700; border-radius: 10px; padding: 20px; background-color: #1a1a1a;">
-  <tr>
-    <td align="center">
-      <h2>🚀 CHEAPEST CAPTCHA SOLVING IN MARKET 🚀</h2>
-      <p><i>Trident Integrated Captcha Solutions - Instant & Reliable</i></p>
-      <hr style="border: 1px solid #FFD700;">
-      <table width="100%">
-        <tr>
-          <td align="center"><b>🤖 Hoopa Solver</b></td>
-          <td align="center"><b>⚡ Shuupiro Solver</b></td>
-        </tr>
-        <tr>
-          <td align="center">100 Solves = <b>3 INR / $0.035</b></td>
-          <td align="center">100 Solves = <b>5 INR / $0.054</b></td>
-        </tr>
-      </table>
-      <p><b>🔥 BULK DISCOUNTS AVAILABLE FOR LARGE PURCHASES 🔥</b></p>
-      <a href="https://discord.com/invite/CF8jDHhyxa">
-        <img src="https://img.shields.io/badge/JOIN_DISCORD_TO_BUY-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Buy Now">
-      </a>
-    </td>
-  </tr>
-</table>
-</div>
+### Prerequisites
+- Node.js 16+ installed
+- Discord bot token(s)
+- Captcha solver API key
 
----
+### Installation
 
-## 🔱 Overview
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   cd YOUR_REPO_NAME
+   ```
 
-**Trident v3** is a premium Discord selfbot designed for high-efficiency Pokétwo automation. Built on a modular architecture, it combines lightning-fast image recognition with robust account management to provide a seamless catching experience.
-
----
-
-## 🌐 Web Control Panel
-
-Trident features a powerful, real-time web dashboard to manage your entire operation from one place.
-
-<p align="center">
-  <img src="https://media.discordapp.net/attachments/1351260615515049984/1467187197227700345/panel_1.png?ex=697f780e&is=697e268e&hm=5575b5a3b190bf7335dca565eb6f080ce90f1ec0abdfb58d65e0ec462b874ff7&=&format=webp&quality=lossless&width=1478&height=695" alt="Trident Panel Overview" width="800px" style="border-radius: 10px; border: 1px solid #333;">
-  <br>
-  <img src="https://media.discordapp.net/attachments/1351260615515049984/1467187197701525807/panel_2.png?ex=697f780e&is=697e268e&hm=30695dec13a1758bf356002d71ff723d4d59e1edba9fb3eb3bfcc72b99afccf1&=&format=webp&quality=lossless&width=1478&height=695" alt="Trident Automation Controls" width="800px" style="border-radius: 10px; border: 1px solid #333;">
-</p>
-
-### 📊 Dashboard Features:
-- **Live Performance Stats**: Track active accounts, total catches, and coin balances in real-time.
-- **Automation Controls**: Start or stop catching and AI identification with a single click.
-- **Integrated Solver Test**: Test your captcha solver configuration directly from the panel.
-- **Market Operations**: Complete Discord-style market purchase flow integrated into the UI.
-
----
-
-## ✨ Key Features
-
-- 🚀 **High-Speed Autocatcher**: Near-instant identification and catching of spawns.
-- 🧠 **AI Image Recognition**: Over 99% accuracy using dedicated AI API. Paid api
-- 🧩 **Dual Captcha Solving**: Native Node.js implementation for **Hoopa** and **Shuupiro**.
-- 👥 **Multi-Account Support**: Manage dozens of tokens simultaneously with independent stats.
-- 🏪 **Market Automation**: Advanced Discord-style market panel for buying listings.
-- 📊 **Real-Time Web Panel**: Branded interface for real-time monitoring.
-- 📜 **Detailed Logging**: Comprehensive Discord webhook integration.
-- **Integrated Token Checker**: Quickly verify the validity and status of your account tokens through the interactive stats menu.
-
----
-
-## ⌨️ Commands & Features
-
-### 🛠️ Bot Control Commands (Prefix: `$`)
-| Command | Description |
-| :--- | :--- |
-| `$start` | Initiates all autocatcher bots from `data/tokens`. |
-| `$stop` | Safely shuts down all active autocatcher sessions. |
-| `$stats` | Displays a detailed embedded message with per-account statistics. |
-| `$addToken` | Dynamically adds and starts a new account token without restarting. |
-| `$market` | Opens the interactive Market Panel for automated buying. |
-| `$transfer` | Scans all accounts and consolidates PokéCoins via market listings. |
-
-### 🎣 Selfbot Commands (Prefix: `.`)
-*These commands are sent from your user accounts to control them directly.*
-| Command | Description |
-| :--- | :--- |
-| `.bal` | Checks current PokéCoin balance on the specific account. |
-| `.say [text]` | Forces the account to send a specific message to the channel. |
-| `.click [btn] [row]` | Programmatically clicks interaction buttons on messages. |
-| `.incense` | Automatically purchases and activates a Pokétwo incense. |
-| `.mbuy [id]` | Quickly initiates a market purchase for a specific listing ID. |
-
----
-
-## 🛠️ Technical Setup
-
-1. **Clone the Repo**: Download the source code.
-2. **Install Dependencies**:
+2. **Install dependencies**
    ```bash
    npm install
    ```
-3. **Configure Settings**: Edit `config.js` with your main bot token and webhooks.
-4. **Add Tokens**: Place your account tokens in `data/tokens` (one per line).
-5. **Launch**:
+
+3. **Configure the bot**
+   ```bash
+   cp config.example.js config.js
+   # Edit config.js with your settings
+   ```
+
+4. **Add your tokens**
+   ```bash
+   # Create data/tokens file and add your Discord tokens (one per line)
+   echo "YOUR_DISCORD_TOKEN_1" > data/tokens
+   echo "YOUR_DISCORD_TOKEN_2" >> data/tokens
+   ```
+
+5. **Start the bot**
    ```bash
    node index.js
    ```
 
+6. **Access the web panel**
+   - Open http://localhost:5000 in your browser
+   - Monitor stats, logs, and control features
+
+## 📋 Commands
+
+### System Commands
+- `$ping` - Check bot response time
+- `$help` - Display command guide
+- `$reload` - Restart all autocatcher instances
+- `$stats` - View detailed statistics
+
+### Pokemon Management
+- `$pokemon` - Browse caught Pokemon by categories
+- `$ai-catch <id/on/off>` - Toggle AI identification
+- `$catcher <id/start/stop>` - Control autocatcher
+
+### Captcha & Solver
+- `$solver <userid> <token>` - Test captcha solver
+- `$balance` - Check API key balance
+- `$captcha <id/on/off>` - Manage captcha solver
+
+### Market Operations
+- `$mpanel` - Open market panel
+- `$transfer` - Transfer Pokecoins
+- `$m-start <token> <channel>` - Start market client
+
+## 🔧 Configuration
+
+### config.js
+```javascript
+module.exports = {
+  botToken: "YOUR_BOT_TOKEN",
+  prefix: "$",
+  owners: ["YOUR_DISCORD_ID"],
+  captchaApiKey: "YOUR_API_KEY",
+  // ... other settings
+};
+```
+
+### Environment Variables
+- `PORT` - Web panel port (default: 5000)
+- `SERVER_PORT` - Alternative port setting
+
+## 🌐 Web Panel Features
+
+- **Real-time Statistics** - Live monitoring of catches and coins
+- **Control Panel** - Start/stop features remotely
+- **Pokemon Logs** - View caught Pokemon with filtering
+- **Market Operations** - Interactive marketplace tools
+- **Account Management** - Monitor multiple accounts
+
+## 🛡️ Security Notes
+
+- Never share your `config.js` file
+- Keep your Discord tokens private
+- Use the provided `.gitignore` to avoid committing sensitive data
+- Regularly rotate your API keys
+
+## 📊 API Endpoints
+
+- `GET /health` - Health check
+- `GET /api/stats` - Statistics data
+- `GET /api/logs/pokemon` - Pokemon logs
+- `POST /api/test-solver` - Test captcha solver
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📝 License
+
+This project is for educational purposes only. Use responsibly and in accordance with Discord's Terms of Service.
+
+## 👨‍💻 Developer
+
+**Made with ❤️ by shuu0001**
+
 ---
 
-## 💬 Support & Community
-
-Need help? Join our official community:
-
-[**Join Trident Discord Server**](https://discord.gg/CF8jDHhyxa)
-
----
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Trident-v1.3-blue?style=flat-square" alt="Version">
-  <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" alt="Status">
-</p>
+⭐ **Star this repository if you found it helpful!**
