@@ -20,7 +20,7 @@ const { AutoCatcher } = require("./autocatcher/index");
 const { startt, stopp, market, checkStatus } = require("./autocatcher/market");
 const config = require("./config");
 const { log } = require("./utils/utils");
-const { statMsg, autocatchers, start, stop, addToken } = require("./functions/functions");
+const { statMsg, autocatchers, start, stop, addToken, removeToken } = require("./functions/functions");
 const { transfer } = require("./functions/markett");
 const { showMarketPanel, handleAccountSelection, handleServerSelection, handleMarketPurchase } = require("./market/marketPanel");
 const { solveCaptcha, checkApiKeyBalance, sendCaptchaMessage } = require("./utils/captchaSolver");
@@ -498,36 +498,10 @@ async function handleRemoveTokenModal(interaction) {
 
   await interaction.deferReply({ ephemeral: true });
 
-  const autocatcherIndex = autocatchers.findIndex((ac) => ac.token === token);
-
-  if (autocatcherIndex === -1) {
-    await interaction.editReply({
-      content: "❌ Token not found in the autocatcher list!"
-    });
-    return;
-  }
-
-  try {
-    // Destroy the client connection
-    await autocatchers[autocatcherIndex].client.destroy();
-
-    // Remove from autocatchers array
-    autocatchers.splice(autocatcherIndex, 1);
-
-    // Remove from tokens array
-    const tokenIndex = tokens.findIndex(t => t === token);
-    if (tokenIndex !== -1) {
-      tokens.splice(tokenIndex, 1);
-    }
-
-    await interaction.editReply({
-      content: "✅ Token successfully removed from autocatcher!"
-    });
-  } catch (error) {
-    await interaction.editReply({
-      content: `❌ Error removing token: ${error.message}`
-    });
-  }
+  const result = await removeToken(token);
+  await interaction.editReply({
+    content: `${result.success ? "✅" : "❌"} ${result.message}`
+  });
 }
 
 bot.login(config.botToken);

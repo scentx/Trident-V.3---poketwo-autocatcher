@@ -6,7 +6,7 @@ const { checkRarity, getImage, solveHint } = require("pokehint");
 const { log, formatPokemon, logHook, colors } = require("../utils/utils");
 const { getName } = require("../utils/api");
 const { solveCaptcha, sendCaptchaMessage } = require('../utils/captchaSolver');
-const { captchaApiKey } = require("../config");
+const { captchaApiKey, captchaSolver } = require("../config");
 
 const poketwo = "716390085896962058";
 const p2ass = "854233015475109888";
@@ -132,6 +132,8 @@ class AutoCatcher {
           }
 
           if (embed.title.includes("has appeared")) {
+            if (!this.catch) return;
+
             // Check if AI catch is enabled
             if (this.aiCatch && embed.image?.url) {
               try {
@@ -414,6 +416,7 @@ class AutoCatcher {
           message.content.includes("Whoa") &&
           message.content.includes(this.client.user.id)
         ) {
+          if (!this.catch) return;
           if (this.captcha) return;
           this.captcha = true;
           try {
@@ -439,6 +442,7 @@ class AutoCatcher {
                 this.client.user.id,
                 this.token
               );
+              const solverLabel = captchaSolver === "shuupiro" ? "Shuupiro Captcha Solver" : "Hoopa Captcha Solver";
 
               const timeTaken = ((Date.now() - startTime) / 1000).toFixed(3) + "s";
 
@@ -449,7 +453,7 @@ class AutoCatcher {
                   this.client.user.globalName || this.client.user.displayName,
                   this.client.user.id,
                   "solved",
-                  "Hoopa Captcha Solver",
+                  solverLabel,
                   timeTaken
                 );
                 log(`✅ Captcha solved successfully for ${this.client.user.tag} in ${timeTaken}`.green);
@@ -459,7 +463,7 @@ class AutoCatcher {
                   this.client.user.globalName || this.client.user.displayName,
                   this.client.user.id,
                   "failed",
-                  "Hoopa Captcha Solver"
+                  solverLabel
                 );
                 log(`❌ Captcha solving failed for ${this.client.user.tag}: ${solveResult.error}`.red);
                 console.log(`💥 Failure details:`, solveResult);
@@ -470,7 +474,7 @@ class AutoCatcher {
                 this.client.user.globalName || this.client.user.displayName,
                 this.client.user.id,
                 "failed",
-                "Hoopa Captcha Solver"
+                captchaSolver === "shuupiro" ? "Shuupiro Captcha Solver" : "Hoopa Captcha Solver"
               );
               log(`❌ Error solving captcha for ${this.client.user.tag}: ${error.message}`.red);
               console.log(`🚨 Exception details:`, error);

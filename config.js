@@ -1,5 +1,5 @@
 module.exports = {
-  botToken: "BOTOTKEN,
+  botToken: "BOTOTKEN",
   prefix: "$",
   owners: ["OWNERID1", "OWNERID2"],
   captchaHook: "https://discord.com/api/webhooks/1468468862780575755/Tmqr7YQ5m6l6rnKdbEzH8TD9lnzaWZsIE7N2JqcduOZTPGji5HXkT723yeW03TwM0RN1",

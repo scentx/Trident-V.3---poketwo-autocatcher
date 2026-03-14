@@ -12,6 +12,35 @@ const { commatize, chunk, errorHook } = require("../utils/utils");
 let autocatchers = [];
 let tokens = [];
 
+const TOKENS_TXT_PATH = path.join(__dirname, "..", "data", "tokens.txt");
+const LEGACY_TOKENS_PATH = path.join(__dirname, "..", "data", "tokens");
+
+function readTokensFromDisk() {
+  let raw = "";
+
+  if (fs.existsSync(TOKENS_TXT_PATH)) {
+    raw = fs.readFileSync(TOKENS_TXT_PATH, "utf-8");
+  } else if (fs.existsSync(LEGACY_TOKENS_PATH)) {
+    raw = fs.readFileSync(LEGACY_TOKENS_PATH, "utf-8");
+  } else {
+    return [];
+  }
+
+  return raw
+    .split(/\r?\n/)
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0);
+}
+
+function writeTokensToDisk(tokenList) {
+  const normalized = Array.from(new Set(tokenList.map((t) => t.trim()).filter(Boolean)));
+  const content = normalized.join("\n");
+
+  // Keep both files in sync so older flows using data/tokens keep working.
+  fs.writeFileSync(TOKENS_TXT_PATH, content, "utf-8");
+  fs.writeFileSync(LEGACY_TOKENS_PATH, content, "utf-8");
+}
+
 async function stop() {
   for (const ac of autocatchers) {
     await ac.client.destroy();
@@ -21,20 +50,19 @@ async function stop() {
 }
 
 async function start() {
-  const tokensPath = path.join(__dirname, "..", "data", "tokens");
-
-  if (!fs.existsSync(tokensPath)) {
+  if (!fs.existsSync(TOKENS_TXT_PATH) && !fs.existsSync(LEGACY_TOKENS_PATH)) {
     console.log("Tokens file does not exist.".red);
     return null;
   }
 
-  const data = fs.readFileSync(tokensPath, "utf-8");
-  const tokenz = data.split("\n").map(token => token.trim()).filter(token => token.length > 0);
+  const tokenz = readTokensFromDisk();
 
   if (tokenz.length === 0) {
     console.log("No tokens found in tokens.txt.".yellow);
     return null;
   }
+
+  writeTokensToDisk(tokenz);
 
   console.log(`Loading ${tokenz.length} tokens...`.cyan);
 
@@ -67,13 +95,24 @@ async function start() {
 }
 
 async function addToken(token, callback) {
-  const tokensPath = path.join(__dirname, "..", "data", "tokens");
-  const existingAutocatcher = autocatchers.find((ac) => ac.token === token);
+  const normalizedToken = (token || "").trim();
+  if (!normalizedToken) {
+    callback(`- Token cannot be empty`.red, false);
+    return;
+  }
+
+  const existingAutocatcher = autocatchers.find((ac) => ac.token === normalizedToken);
   if (existingAutocatcher) {
     callback(`- Autocatcher already exists!`.red, false);
     return;
   }
-  const ac = new AutoCatcher(token);
+  const existingTokenOnDisk = readTokensFromDisk().includes(normalizedToken);
+  if (existingTokenOnDisk) {
+    callback(`- Token already exists in tokens file!`.red, false);
+    return;
+  }
+
+  const ac = new AutoCatcher(normalizedToken);
   try {
     await ac.login();
     let loggedIn = false;
@@ -86,15 +125,13 @@ async function addToken(token, callback) {
         loggedIn = true;
         ac.catcher();
         autocatchers.push(ac);
+        tokens.push(normalizedToken);
         
         try {
-          let currentTokens = [];
-          if (fs.existsSync(tokensPath)) {
-            currentTokens = fs.readFileSync(tokensPath, "utf-8").split("\n").map(t => t.trim()).filter(t => t.length > 0);
-          }
-          if (!currentTokens.includes(token)) {
-            currentTokens.push(token);
-            fs.writeFileSync(tokensPath, currentTokens.join("\n"), "utf-8");
+          const currentTokens = readTokensFromDisk();
+          if (!currentTokens.includes(normalizedToken)) {
+            currentTokens.push(normalizedToken);
+            writeTokensToDisk(currentTokens);
           }
         } catch (err) {
           console.log(`Failed to sync tokens.txt: ${err.message}`.red);
@@ -105,7 +142,7 @@ async function addToken(token, callback) {
       if (!loggedIn) {
         callback(
           `- Failed to login into ${
-            token.substring(0, token.indexOf(".")) || `_token_`
+            normalizedToken.substring(0, normalizedToken.indexOf(".")) || `_token_`
           } | Invalid Token?`.red,
           false
         );
@@ -113,6 +150,36 @@ async function addToken(token, callback) {
     }, 5000);
   } catch (error) {
     callback(`- Error occurred: ${error.message}`.red, false);
+  }
+}
+
+async function removeToken(token) {
+  const normalizedToken = (token || "").trim();
+  if (!normalizedToken) {
+    return { success: false, message: "Token cannot be empty." };
+  }
+
+  const autocatcherIndex = autocatchers.findIndex((ac) => ac.token === normalizedToken);
+  if (autocatcherIndex === -1) {
+    return { success: false, message: "Token not found in the autocatcher list!" };
+  }
+
+  try {
+    await autocatchers[autocatcherIndex].client.destroy();
+    autocatchers.splice(autocatcherIndex, 1);
+
+    const tokenIndex = tokens.findIndex((t) => t === normalizedToken);
+    if (tokenIndex !== -1) {
+      tokens.splice(tokenIndex, 1);
+    }
+
+    const fileTokens = readTokensFromDisk();
+    const updatedTokens = fileTokens.filter((t) => t !== normalizedToken);
+    writeTokensToDisk(updatedTokens);
+
+    return { success: true, message: "Token successfully removed from autocatcher and token file!" };
+  } catch (error) {
+    return { success: false, message: `Error removing token: ${error.message}` };
   }
 }
 
@@ -305,6 +372,7 @@ module.exports = {
   stop,
   start,
   addToken,
+  removeToken,
   statMsg,
   autocatchers,
   tokens,

@@ -10,6 +10,54 @@ class CaptchaSolverAPI {
     this.maxRetries = options.maxRetries || 3;
   }
 
+  isSuccessResult(result) {
+    if (!result || typeof result !== "object") return false;
+
+    const statusLike = [
+      result.status,
+      result.success,
+      result?.data?.status,
+      result?.data?.success,
+      result?.result?.status,
+      result?.result?.success
+    ];
+
+    return statusLike.some((value) => {
+      if (value === true || value === 1) return true;
+      if (typeof value === "string") {
+        const normalized = value.trim().toLowerCase();
+        return normalized === "true" || normalized === "success" || normalized === "solved" || normalized === "ok";
+      }
+      return false;
+    });
+  }
+
+  extractSolution(result) {
+    return (
+      result?.solution ||
+      result?.captcha ||
+      result?.token ||
+      result?.result ||
+      result?.data?.solution ||
+      result?.data?.captcha ||
+      result?.data?.token ||
+      result?.data?.result ||
+      null
+    );
+  }
+
+  extractError(result) {
+    return (
+      result?.error ||
+      result?.message ||
+      result?.data?.error ||
+      result?.data?.message ||
+      result?.result?.error ||
+      result?.result?.message ||
+      "Captcha solving failed"
+    );
+  }
+
   async solveCaptcha(uid, token) {
     if (!uid || !token) {
       throw new Error('Both uid and token are required');
@@ -33,15 +81,20 @@ class CaptchaSolverAPI {
         const result = response.data;
         console.log(`Captcha API response:`, JSON.stringify(result, null, 2));
 
-        if (result && (result.status === true || result.success === true)) {
+        if (this.isSuccessResult(result)) {
           return result;
         } else {
-          throw new Error(result?.error || result?.message || result?.result || 'Captcha solving failed');
+          throw new Error(this.extractError(result));
         }
       } catch (error) {
-        console.error(`Captcha solving attempt ${attempt} failed:`, error.message);
+        if (attempt < this.maxRetries) {
+          console.warn(
+            `Captcha solve attempt ${attempt}/${this.maxRetries} did not complete: ${error.message}. Retrying...`
+          );
+        }
         
         if (attempt === this.maxRetries) {
+          console.error(`Captcha solving failed after ${this.maxRetries} attempts:`, error.message);
           throw new Error(`Failed to solve captcha after ${this.maxRetries} attempts. Last error: ${error.message}`);
         }
         
@@ -122,10 +175,11 @@ async function solveCaptcha(apiKey, userId, token, hostname) {
       });
 
       const result = await solver.solveCaptcha(userId, token);
+      const solvedToken = solver.extractSolution(result);
       
       return {
         success: true,
-        result: result.solution || result.data || result.result || 'Solved successfully'
+        result: solvedToken || result.data || result.result || 'Solved successfully'
       };
     } catch (error) {
       console.error(`🚨 Hoopa captcha solving failed:`, error);
